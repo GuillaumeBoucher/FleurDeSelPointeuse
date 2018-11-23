@@ -1,0 +1,76 @@
+﻿@model List<TimeTracker.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/mainView.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="btn-group">
+        @Html.ActionLink("Ajouter un employée", "Create", "Employee", routeValues: null, htmlAttributes: new { @class = "btn btn-block btn-primary", @role = "button" })
+    </div>
+
+    <ol class="breadcrumb">
+        <li><a href="~/"><i class="fa fa-home"></i> Accueil</a></li>
+        <li><a href="~/Employee"> Employée</a></li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <!-- TABLE: LATEST ORDERS -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Employées disponibles</h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>Suprimer</th>
+                            <th>Employés</th>
+                            <th>Status</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                        @if (Model != null)
+                        {
+                            foreach (var Employee in Model)
+                            {
+                        <tr>
+                            <td><a href="~/Employee/Delete/@Employee.id"><i class="text-red fa fa-close"></i></a></td>
+                            <td><a href="~/Employee/Edit/@Employee.id"> @Employee.prenom @Employee.nom</a></td>
+                            @{
+                                switch (Employee.status)
+                                {
+                                    case "absent":
+                                        <td><span class="label label-info">Absent</span></td>
+                                        break;
+                                    case "service":
+                                        <td><span class="label label-success ">En Service</span></td>
+                                        break;
+                                    case "pause":
+                                        <td><span class="label label-primary ">En Pause</span></td>
+                                        break;
+                                }
+                            }
+
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+
+    </div>
+    <!-- /.box -->
+
+
+
+</section>
+<!-- /.content -->

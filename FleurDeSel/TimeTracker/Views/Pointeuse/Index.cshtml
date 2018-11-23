@@ -1,0 +1,188 @@
+﻿@model TimeTracker.Employee
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/mainView.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        <small>Pointeuse</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="~/Pointeuse"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Pointeuse</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-primary ">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Actions</h3>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table no-margin">
+                        @{
+                            switch (Model.status)
+                            {
+                                case "absent":
+                                    <tr>
+                                        <td><a href="/Pointeuse/StartService/@Model.id" class="btn btn-app"><i class="glyphicon glyphicon-play"></i> Début de service</a></td>
+                                        <td><a href="/Pointeuse/EndService/@Model.id" class="btn btn-app disabled"><i class="glyphicon glyphicon-stop"></i> Fin de service</a></td>
+                                        <td><a href="/Pointeuse/StartPause/@Model.id" class="btn btn-app disabled"><i class="glyphicon glyphicon-pause"></i> Début de pause</a></td>
+                                        <td><a href="/Pointeuse/EndPause/1" class="btn btn-app disabled"><i class="glyphicon glyphicon-log-out"></i> Find de pause</a></td>
+                                    </tr>
+                                    break;
+
+                                case "service":
+                                    <tr>
+                                        <td><a href="/Pointeuse/StartService/@Model.id" class="btn btn-app disabled"><i class="fa fa-edit"></i> Début de service</a></td>
+                                        <td><a href="/Pointeuse/EndService/@Model.id" class="btn btn-app"><i class="glyphicon glyphicon-stop"></i> Fin de service</a></td>
+                                        <td><a href="/Pointeuse/StartPause/@Model.id" class="btn btn-app"><i class="glyphicon glyphicon-pause"></i> Début de pause</a></td>
+                                        <td><a href="/Pointeuse/EndPause/1" class="btn btn-app"><i class="glyphicon glyphicon-log-out"></i> Find de pause</a></td>
+                                    </tr>
+                                    break;
+                                case "pause":
+                                    <tr>
+                                        <td><a href="/Pointeuse/StartService/@Model.id" class="btn btn-app disabled"><i class="fa fa-edit"></i> Début de service</a></td>
+                                        <td><a href="/Pointeuse/EndService/@Model.id" class="btn btn-app disabled"><i class="glyphicon glyphicon-stop"></i> Fin de service</a></td>
+                                        <td><a href="/Pointeuse/StartPause/@Model.id" class="btn btn-app disabled"><i class="glyphicon glyphicon-pause"></i> Début de pause</a></td>
+                                        <td><a href="/Pointeuse/EndPause/1" class="btn btn-app"><i class="glyphicon glyphicon-log-out"></i> Find de pause</a></td>
+                                    </tr>
+                                    break;
+
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.input -->
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary ">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> @Model.prenom @Model.nom ( @Model.status ) </h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table margin-bottom">
+                        <thead>
+                            <tr>
+                                <th>Début</th>
+                                <th>Fin</th>
+                                <th>Durée</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.WorkTime != null)
+                            {
+                                var getlist = ViewBag.WorkTime as IEnumerable<TimeTracker.TimeData>;
+                                foreach (var td in getlist)
+                                {
+                                    <tr>
+                                        <td>@td.Start.ToString()</td>
+                                        <td>@td.End.ToString()</td>
+                                        @{
+                                            if (td.Start != null && td.End != null)
+                                            {
+                                                <td>@td.End.Value.Subtract(td.Start.Value).ToString()</td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td><b>Durée Totale</b></td>
+                                <td>@ViewBag.TotalWorkTime</td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.stats -->
+
+        <div class="col-md-6">
+            <div class="box box-primary ">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> @Model.prenom @Model.nom ( @Model.status ) </h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table margin-bottom">
+                        <thead>
+                            <tr>
+                                <th>Début</th>
+                                <th>Fin</th>
+                                <th>Durée</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.PauseTime != null)
+                            {
+                                var getlist = ViewBag.PauseTime as IEnumerable<TimeTracker.TimeData>;
+                                foreach (var td in getlist)
+                                {
+                                    <tr>
+                                        <td>@td.Start.ToString()</td>
+                                        <td>@td.End.ToString()</td>
+                                        @{
+                                            if (td.Start != null && td.End != null)
+                                            {
+                                                <td>@td.End.Value.Subtract(td.Start.Value).ToString()</td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td><b>Durée Totale</b></td>
+                                <td>@ViewBag.TotalPauseTime</td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.stats -->
+
+
+
+
+    </div>
+    <!-- /.row -->
+
+
+</section>
+<!-- /.content -->

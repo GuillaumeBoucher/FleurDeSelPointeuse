@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker", "TimeTracker\TimeTracker.csproj", "{90B7A92C-A0BE-41DA-927D-D4B05E10B974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrackerApp", "TimeTracketApp\TimeTrackerApp.csproj", "{0494B777-04C4-4DFD-85B9-4F26E6070962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pointeuse", "Pointeuse\Pointeuse.csproj", "{414E7C14-C68F-41A1-8E23-7A586FA837EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateCitationDb", "CreateCitationDb\CreateCitationDb.csproj", "{81921F3D-6328-4FB9-9130-3B7519F0230A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90B7A92C-A0BE-41DA-927D-D4B05E10B974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B7A92C-A0BE-41DA-927D-D4B05E10B974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B7A92C-A0BE-41DA-927D-D4B05E10B974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B7A92C-A0BE-41DA-927D-D4B05E10B974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0494B777-04C4-4DFD-85B9-4F26E6070962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0494B777-04C4-4DFD-85B9-4F26E6070962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0494B777-04C4-4DFD-85B9-4F26E6070962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0494B777-04C4-4DFD-85B9-4F26E6070962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414E7C14-C68F-41A1-8E23-7A586FA837EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414E7C14-C68F-41A1-8E23-7A586FA837EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414E7C14-C68F-41A1-8E23-7A586FA837EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414E7C14-C68F-41A1-8E23-7A586FA837EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81921F3D-6328-4FB9-9130-3B7519F0230A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81921F3D-6328-4FB9-9130-3B7519F0230A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81921F3D-6328-4FB9-9130-3B7519F0230A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81921F3D-6328-4FB9-9130-3B7519F0230A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6826A59-A543-4A44-836B-708C8FE8CFF3}
+	EndGlobalSection
+EndGlobal
